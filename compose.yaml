@@ -1,0 +1,29 @@
+name: cabox
+
+services:
+  cabox:
+    image: ${COMPOSE_PROJECT_NAME}:${STAGE}
+    container_name: ${COMPOSE_PROJECT_NAME}
+    hostname: ${COMPOSE_PROJECT_NAME}${FQDN}
+    env_file: .env.${STAGE}
+    volumes:
+      - data:/opt/cabox
+    secrets:
+      - privkey_password
+      - pem_subj
+    entrypoint:
+      - /bin/sh
+      - /root/init.sh
+      - "/run/secrets/privkey_password"
+      - "/run/secrets/pem_subj"
+    restart: ${CONTAINER_RESTART_POLICY:-unless-stopped}
+
+volumes:
+  data:
+    name: ${COMPOSE_PROJECT_NAME}_data
+
+secrets:
+  privkey_password:
+    file: ./secrets/.privkey_password_${STAGE}
+  pem_subj:
+    file: ./secrets/.pem_subj_${STAGE}
