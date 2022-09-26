@@ -1,13 +1,13 @@
-name: cabox
+name: ca-crate
 
 services:
-  cabox:
+  ca-crate:
     image: ${COMPOSE_PROJECT_NAME}:${STAGE}
     container_name: ${COMPOSE_PROJECT_NAME}
     hostname: ${COMPOSE_PROJECT_NAME}${FQDN}
     env_file: .env.${STAGE}
     volumes:
-      - data:/opt/cabox
+      - data:/opt/ca-crate
     secrets:
       - privkey_password
       - pem_subj

@@ -8,10 +8,10 @@ RUN apk update && \
 ENV TZ="Europe/Brussels"
 
 # Create base folders for CA
-RUN mkdir /opt/cabox \
-          /opt/cabox/certs \
-          /opt/cabox/CRL \
-          /opt/cabox/private \
-          /opt/cabox/CSRs
+RUN mkdir /opt/ca-crate \
+          /opt/ca-crate/certs \
+          /opt/ca-crate/CRL \
+          /opt/ca-crate/private \
+          /opt/ca-crate/CSRs
 
 COPY ./init.sh /root
