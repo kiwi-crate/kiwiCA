@@ -16,7 +16,12 @@ services:
       - privkey_password
       - pem_subj
     volumes:
-      - data:/opt/ca-crate
+      - type: volume
+        source: data
+        target: /opt/ca-crate
+      - type: bind
+        source: ${ROOTCA_BIND_LOCATION:-./dummy}
+        target: /opt/ca-crate/rootCA
 
 volumes:
   data:
