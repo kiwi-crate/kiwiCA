@@ -7,6 +7,8 @@ services:
       - /bin/sh
       - /root/init.sh
     env_file: .env.${STAGE}
+    environment:
+      CA_GENERATE: ${CA_GENERATE}
     hostname: ${COMPOSE_PROJECT_NAME}${FQDN}
     image: ${COMPOSE_PROJECT_NAME}:${STAGE}
     restart: ${CONTAINER_RESTART_POLICY:-unless-stopped}
