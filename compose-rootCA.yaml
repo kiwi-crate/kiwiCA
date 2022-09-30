@@ -5,19 +5,16 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}
     entrypoint:
       - /bin/sh
-      - /root/init.sh
-    env_file: .env.${STAGE}
-    environment:
-      CA_GENERATE: ${CA_GENERATE}
+      - /root/generate-rootCA.sh
     hostname: ${COMPOSE_PROJECT_NAME}${FQDN}
-    image: ${COMPOSE_PROJECT_NAME}:${STAGE}
+    image: ca-crate:1.0.0
     restart: ${CONTAINER_RESTART_POLICY:-unless-stopped}
     volumes:
       - type: volume
         source: data
         target: /opt/ca-crate
       - type: bind
-        source: ${ROOTCA_BIND_LOCATION:-./dummy}
+        source: ${ROOTCA_BIND:-./dummy/rootCA}
         target: /opt/ca-crate/rootCA
 
 volumes:

@@ -1,0 +1,25 @@
+name: ca-crate
+
+services:
+  ca-crate:
+    container_name: ${COMPOSE_PROJECT_NAME}
+    entrypoint:
+      - /bin/sh
+      - /root/generate-client.sh
+    hostname: ${COMPOSE_PROJECT_NAME}${FQDN}
+    image: ca-crate:1.0.0
+    restart: ${CONTAINER_RESTART_POLICY:-unless-stopped}
+    volumes:
+      - type: volume
+        source: data
+        target: /opt/ca-crate
+      - type: bind
+        source: ${ROOTCA_BIND:-./dummy/rootCA}
+        target: /opt/ca-crate/rootCA
+      - type: bind
+        source: ${CLIENT_BIND:-./dummy/client}
+        target: /opt/ca-crate/client
+
+volumes:
+  data:
+    name: ${COMPOSE_PROJECT_NAME}_data

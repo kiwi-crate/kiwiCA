@@ -21,4 +21,4 @@ RUN touch /opt/ca-crate/index.txt       && \
     echo "1000" > /opt/ca-crate/serial  && \
     chmod 700 /opt/ca-crate/private
 
-COPY ./init.sh /root
+COPY ["scripts", "/root"]
