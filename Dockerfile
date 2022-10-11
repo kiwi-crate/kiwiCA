@@ -15,10 +15,10 @@ RUN mkdir /opt/ca-crate             \
           /opt/ca-crate/private     \
           /opt/ca-crate/CSRs
 
-COPY ./openssl.cnf /etc/ssl/openssl.cnf
-
 RUN touch /opt/ca-crate/index.txt       && \
-    echo "1000" > /opt/ca-crate/serial  && \
+    echo "0000" > /opt/ca-crate/serial  && \
     chmod 700 /opt/ca-crate/private
+
+COPY ["./openssl.cnf", "/etc/ssl/openssl.cnf"]
 
 COPY ["scripts", "/root"]

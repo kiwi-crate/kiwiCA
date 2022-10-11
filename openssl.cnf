@@ -26,8 +26,8 @@ default_crl_days    = 30
 
 # rootCA key & pem
 rootCA_dir = /opt/ca-crate/rootCA
-private_key = $rootCA_dir/rootCA.key # The private key
-certificate = $rootCA_dir/rootCA.pem # The CA certificate
+private_key = $rootCA_dir/rootCA.key.pem # The private key
+certificate = $rootCA_dir/rootCA.crt.pem # The CA certificate
 
 
 # Comment out the following two lines for the "traditional"
