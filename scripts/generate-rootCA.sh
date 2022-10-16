@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-ROOTCA_MOUNT_LOCATION="/opt/ca-crate/rootCA";
+ROOTCA_MOUNT_LOCATION="/opt/kiwica/rootCA";
 source ${ROOTCA_MOUNT_LOCATION}/rootCA_pem_subject;
 
 if [ ! -e ${ROOTCA_MOUNT_LOCATION}/rootCA.key ]; then

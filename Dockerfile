@@ -8,16 +8,16 @@ RUN apk update      && \
 ENV TZ="Europe/Brussels"
 
 # Create base folders for CA
-RUN mkdir /opt/ca-crate             \
-          /opt/ca-crate/certs       \
-          /opt/ca-crate/crl         \
-          /opt/ca-crate/newcerts    \
-          /opt/ca-crate/private     \
-          /opt/ca-crate/CSRs
+RUN mkdir /opt/kiwica             \
+          /opt/kiwica/certs       \
+          /opt/kiwica/crl         \
+          /opt/kiwica/newcerts    \
+          /opt/kiwica/private     \
+          /opt/kiwica/CSRs
 
-RUN touch /opt/ca-crate/index.txt       && \
-    echo "0000" > /opt/ca-crate/serial  && \
-    chmod 700 /opt/ca-crate/private
+RUN touch /opt/kiwica/index.txt       && \
+    echo "0000" > /opt/kiwica/serial  && \
+    chmod 700 /opt/kiwica/private
 
 COPY ["./openssl.cnf", "/etc/ssl/openssl.cnf"]
 

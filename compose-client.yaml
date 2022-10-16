@@ -1,24 +1,24 @@
-name: ca-crate
+name: kiwica
 
 services:
-  ca-crate:
+  kiwica:
     container_name: ${COMPOSE_PROJECT_NAME}
     entrypoint:
       - /bin/sh
       - /root/generate-client.sh
     hostname: ${COMPOSE_PROJECT_NAME}${FQDN}
-    image: ca-crate:1.0.0
+    image: kiwica:1.0.0
     restart: ${CONTAINER_RESTART_POLICY:-unless-stopped}
     volumes:
       - type: volume
         source: data
-        target: /opt/ca-crate
+        target: /opt/kiwica
       - type: bind
         source: ${ROOTCA_BIND:-./dummy/rootCA}
-        target: /opt/ca-crate/rootCA
+        target: /opt/kiwica/rootCA
       - type: bind
         source: ${CLIENT_BIND:-./dummy/client}
-        target: /opt/ca-crate/client
+        target: /opt/kiwica/client
 
 volumes:
   data:

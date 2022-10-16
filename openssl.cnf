@@ -8,7 +8,7 @@ openssl_conf = openssl_init
 default_ca = CA_default # The default ca section
 ####################################################################
 [ CA_default ]
-dir             = /opt/ca-crate     # Where everything is kept
+dir             = /opt/kiwica     # Where everything is kept
 certs           = $dir/certs        # Where the issued certs are kept
 new_certs_dir   = $dir/newcerts     # default place for new certs.
 database        = $dir/index.txt    # database index file.
@@ -25,7 +25,7 @@ crl_extensions      = crl_ext
 default_crl_days    = 30
 
 # rootCA key & pem
-rootCA_dir = /opt/ca-crate/rootCA
+rootCA_dir = /opt/kiwica/rootCA
 private_key = $rootCA_dir/rootCA.key.pem # The private key
 certificate = $rootCA_dir/rootCA.crt.pem # The CA certificate
 
